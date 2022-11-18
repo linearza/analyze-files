@@ -1,0 +1,24 @@
+{
+  "name": "analyze-files",
+  "version": "1.0.0",
+  "description": "Word count yaml and json files",
+  "main": "index.js",
+  "dependencies": {
+    "columnify": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./index.js $DIR $EXCL_PATTERN",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linearza/analyze-files.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linearza/analyze-files/issues"
+  },
+  "homepage": "https://github.com/linearza/analyze-files#readme"
+}
