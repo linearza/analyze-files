@@ -1,6 +1,7 @@
 const args = process.argv.slice(2);
 const DIRECTORY = args[0];
 const EXCLUDE_PATTERNS = args.slice(1);
+const INCLUDED_FILETYPES = ['.coffee']
 
 const fs = require("fs");
 const path = require("path");
@@ -13,7 +14,8 @@ function* walkSync(dir) {
       yield* walkSync(path.join(dir, file.name));
     } else {
       const extension = path.extname(file.name);
-      if (extension !== ".coffee") continue;
+
+      if (!INCLUDED_FILETYPES.includes(extension)) continue
 
       yield {
         path: path.join(dir, file.name),
@@ -30,7 +32,7 @@ let fileContent = "";
 
 async function processFiles() {
   fileContent += "/* \n";
-  fileContent += `\t File stats for all Coffeescript files in ${DIRECTORY} \n`;
+  fileContent += `\t File stats for all files in ${DIRECTORY} \n`;
   fileContent += "*/ \n\n";
 
   for (const file of walkSync(DIRECTORY)) {
