@@ -10,7 +10,7 @@ A simple Node app to collect and analyze files in a directory.
 To run:
 
 ```
-npm start --dir='../dentally/app/ember-frontend' --exclude_patterns='node_modules,dist' --include_extensions='.dummy,.coffee'
+npm start --dir='../path/to/source' --exclude_patterns='node_modules,dist' --include_extensions='.dummy,.coffee'
 ```
 
 Columns generated: `['path', 'bytes', 'loc', 'effort']`
