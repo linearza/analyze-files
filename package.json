@@ -1,14 +1,15 @@
 {
   "name": "analyze-files",
   "version": "1.0.0",
-  "description": "Word count yaml and json files",
+  "description": "File count and effort analyzer",
   "main": "index.js",
   "dependencies": {
-    "columnify": "^1.6.0"
+    "columnify": "^1.6.0",
+    "fast-csv": "^4.3.6"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node ./index.js $DIR $EXCL_PATTERN",
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

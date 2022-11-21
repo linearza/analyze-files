@@ -1,12 +1,18 @@
 # analyze-files
 
 A simple Node app to collect and analyze files in a directory.
-Works with nested directory structure.
-Allows for exclude patterns
+
+- Works with nested directory structure.
+- Allows for exclude patterns
+- Extensible file types, defaults to `.coffee`
+- Effort quotient calculated in a rudimentary fashion based off lines of code and byte size
 
 To run:
+
 ```
-npm start '../my/translations/dir' 'node_modules' 'exclude_pattern2'
+npm start --dir='../dentally/app/ember-frontend' --exclude_patterns='node_modules,dist' --include_extensions='.dummy,.coffee'
 ```
 
-Generates `/dist/output.txt`
+Columns generated: `['path', 'bytes', 'loc', 'effort']
+
+Files generated: `/dist/output.csv` and `/dist/output.txt`
