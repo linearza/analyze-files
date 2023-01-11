@@ -7,6 +7,7 @@ const fs = require("fs");
 const path = require("path");
 var columnify = require("columnify");
 const csv = require("fast-csv");
+const isBinaryFileSync = require("isbinaryfile").isBinaryFileSync;
 
 class CsvFile {
   static write(filestream, rows, options) {
@@ -57,6 +58,7 @@ async function processFiles() {
   for (const file of walkSync(DIRECTORY)) {
     if (EXCLUDE_PATTERNS.some((pattern) => file.path.includes(pattern)))
       continue;
+    if (isBinaryFileSync(file)) continue;
 
     fileCount += 1;
     try {
@@ -143,6 +145,10 @@ async function run() {
 
   if (processedFileData.length) {
     const sortedFileData = processedFileData.sort(compare);
+
+    if (!fs.existsSync("./dist")){
+      fs.mkdirSync("./dist");
+    }
 
     await generateCsv(sortedFileData);
     await generateTxt(sortedFileData, fileCount);
